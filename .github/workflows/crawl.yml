@@ -2,13 +2,12 @@ name: Crawl RSS to Supabase
 
 on:
   schedule:
-    - cron: "0 */2 * * *" # chạy mỗi giờ
+    - cron: "0 */2 * * *" # chạy mỗi 2 giờ
   workflow_dispatch:
 
 jobs:
   crawl:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -19,12 +18,10 @@ jobs:
           python-version: 3.11
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install feedparser psycopg2-binary
+        run: pip install feedparser supabase
 
       - name: Run crawler
         env:
-          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
-        run: |
-          python crawl.py
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: python crawl.py
