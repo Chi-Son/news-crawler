@@ -5,7 +5,7 @@ import json
 
 DATABASE_URL = os.environ["SUPABASE_DB_URL"]
 
-with open("rss_feeds.json", "r", encoding="utf-8") as f:
+with open("feeds.json", "r", encoding="utf-8") as f:
     rss_feeds = json.load(f)
 
 conn = psycopg2.connect(DATABASE_URL)
