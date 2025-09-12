@@ -16,7 +16,7 @@ with open("feeds.json", "r", encoding="utf-8") as f:
 for category, urls in rss_feeds.items():
     for rss_url in urls:
         feed = feedparser.parse(rss_url)
-        for entry in feed.entries[:5]:
+        for entry in feed.entries[:3]:
             link = entry.link
             try:
                 supabase.table("news_links").upsert(
