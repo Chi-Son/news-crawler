@@ -18,7 +18,7 @@ with open("feeds.json", "r", encoding="utf-8") as f:
 for category, urls in rss_feeds.items():
     for rss_url in urls:
         feed = feedparser.parse(rss_url)
-        for entry in feed.entries:
+        for entry in feed.entries[:5]:
             link = entry.link
             try:
                 # Insert vào Supabase, ignore duplicate
