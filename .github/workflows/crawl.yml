@@ -1,27 +1,27 @@
-name: Crawl RSS to Supabase
+#name: Crawl RSS to Supabase
 
-on:
-  schedule:
-    - cron: "0 */2 * * *" # chạy mỗi 2 giờ
-  workflow_dispatch:
+#on:
+#  schedule:
+#    - cron: "0 */2 * * *" # chạy mỗi 2 giờ
+#  workflow_dispatch:
 
-jobs:
-  crawl:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+#jobs:
+#  crawl:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout repo
+#        uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.11
+#      - name: Set up Python
+#        uses: actions/setup-python@v4
+#        with:
+#          python-version: 3.11
 
-      - name: Install dependencies
-        run: pip install feedparser supabase
+#      - name: Install dependencies
+#        run: pip install feedparser supabase
 
-      - name: Run crawler
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-        run: python crawl.py
+#      - name: Run crawler
+#        env:
+#          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+#          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+#        run: python crawl.py
